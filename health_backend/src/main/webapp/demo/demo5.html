@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定义组件</title>
+<!--组件使用场景：在项目需要重用莫个模块（头部，尾部，新闻）的时候，可以将模块抽取成组件
+其他页面中注册并引用
+
+全局注册：在任何vue实例中都可以引用
+局部注册：可以在有需要的页面引入组件
+
+-->
+    <script src="../js/vue.js"></script>
+    <script src="../plugins/elementui/index.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script src="../js/axios-0.18.0.js"></script>
+</head>
+<body>
+ <div id="app">
+   <!--使用组件-->
+     <counter></counter>
+     <counter></counter>
+     <counter></counter>
+     <counter></counter>
+ </div>
+</body>
+<script>
+
+    <!--定义组件-->
+    const counter={
+        template:"<button @click='num++'>你点击了{{num}}次</button>",
+        data(){
+            return {num:0}
+        }
+    }
+
+    //全局注册组件：在所有的vue实例中都可以使用组件
+    //参数1:组件名称，参数2：具体的组件
+    Vue.component("counter",counter);
+    new Vue({
+        el:"#app",
+        data:{
+            users:[]
+        },
+        created(){
+
+            axios.get("data.json").then(res=>{
+                console.log(res);
+                app.users=res.data;
+            }).catch(err=>alert(err));
+            //this出了钩子函数就是vue实例
+            //初始化加载数据
+            axios({
+                url:"data.json",
+                method: "get"
+            }).then(res=>{
+                console.log(res);
+                //将数据赋值到vue实例中的数据属性users
+                //不能使用this，在axios回调函数中表示窗口，不是vue实例
+                app.users=res.data;
+            }).catch(err=>alert(err));
+        }
+
+    });
+</script>
+</html>

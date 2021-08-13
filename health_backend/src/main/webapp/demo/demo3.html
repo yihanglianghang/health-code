@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 引入组件库 -->
+    <script src="../js/vue.js"></script>
+    <script src="../plugins/elementui/index.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script src="../js/axios-0.18.0.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item) in arr ">{{item}}</li>
+    </ul>
+
+</div>
+</body>
+
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            arr:[1,2,3,4,5]
+        }
+    });
+</script>
+</html>

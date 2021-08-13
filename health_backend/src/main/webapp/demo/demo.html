@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 引入组件库 -->
+    <script src="../js/vue.js"></script>
+    <script src="../plugins/elementui/index.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script src="../js/axios-0.18.0.js"></script>
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <br><button v-on:click="fun1(msg)">vue的onclick</button>
+</div>
+
+</body>
+
+
+<script>
+
+    <!--注意:写的是methods而不是method-->
+    new Vue({
+        el:"#app",
+        data:{
+            message:"hello vue!!!"
+        },
+        methods:{
+            fun1:function(msg){
+                this.message=msg;
+                alert("hello");
+            }
+        }
+    });
+</script>
+</html>

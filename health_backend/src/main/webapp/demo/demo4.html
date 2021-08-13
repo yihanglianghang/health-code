@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model的使用方式</title>
+    <h1>v-if是根据表达式的值来决定是否渲染元素</h1>
+    <h2>v-show是根据表达式的值来切换元素的display css 属性</h2>
+    <!-- 引入组件库 -->
+    <script src="../js/vue.js"></script>
+    <script src="../plugins/elementui/index.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script src="../js/axios-0.18.0.js"></script>
+</head>
+<body>
+
+
+ <div id="app">
+     <!--<form>-->
+        <!--用户名： <input type="text" name="username" v-model="user.username"><br/>-->
+         <!--密码：<input type="text" name="password" v-model="user.password"><br/>-->
+     <!--</form>-->
+
+     <span v-if="flag">传智播客</span>
+     <span v-show="flag">itheima</span>
+     <button @click="toggle">切换</button>
+
+ </div>
+</body>
+
+  <script>
+      new Vue({
+
+          el:"#app",
+          data:{
+              flag:false
+          },
+          methods:{
+              toggle:function(){
+                  this.flag=!this.flag;
+              }
+          }
+      });
+  </script>
+</html>
